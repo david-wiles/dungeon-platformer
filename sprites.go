@@ -10,24 +10,13 @@ import (
 	"os"
 )
 
-var sheet pixel.Picture
-var sprites map[string]*pixel.Sprite
-
-// Returns the batch for the dungeon sprite sheet
-func getDungeonBatch() *pixel.Batch {
-	var err error
-	sheet, err = loadPicture("resources/dungeon.png")
+// Generate the sprites and store in the global variable in this file
+func makeDungeon(path string) (*pixel.Batch, map[string]*pixel.Sprite) {
+	sheet, err := loadPicture(path)
 	if err != nil {
 		panic(err)
 	}
-	generateSprites(sheet)
-
-	return pixel.NewBatch(&pixel.TrianglesData{}, sheet)
-}
-
-// Generate the sprites and store in the global variable in this file
-func generateSprites(picture pixel.Picture) {
-	sprites = make(map[string]*pixel.Sprite)
+	sprites := make(map[string]*pixel.Sprite)
 
 	sprites["tall_yellow_creep"] = pixel.NewSprite(sheet, pixel.R(0, 16, 16, 32))
 	sprites["short_yellow_creep"] = pixel.NewSprite(sheet, pixel.R(16, 16, 32, 32))
@@ -57,6 +46,7 @@ func generateSprites(picture pixel.Picture) {
 	sprites["tall_hole"] = pixel.NewSprite(sheet, pixel.R(64, 240, 80, 256))
 
 	// And the rest
+	return pixel.NewBatch(&pixel.TrianglesData{}, sheet), sprites
 }
 
 // Load a picture from an image file
