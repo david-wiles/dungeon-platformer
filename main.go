@@ -3,68 +3,52 @@ package main
 import (
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
-	"image/color"
 	_ "image/png"
 	"time"
 )
+
+func gameLoop() {
+	last := time.Now()
+	for !global.gWin.Closed() {
+		dt := time.Since(last).Seconds()
+		last = time.Now()
+
+		global.gWin.Clear(global.gClearColor)
+
+		// Update systems
+
+		global.gCamera.Update(dt)
+		global.gWorld.Draw(dt)
+
+		global.gWin.Update()
+	}
+}
+
+func setup() {
+	global.gWorld.Init()
+	global.gCamera.Init()
+	global.gTextures.Load(wConfigFile)
+	global.gCamera.follow = global.gPlayer
+}
 
 func run() {
 	// Initialize window
 	cfg := pixelgl.WindowConfig{
 		Title:  "Hello from pixel!",
-		Bounds: pixel.R(0, 0, 1024, 768),
+		Bounds: pixel.R(0, 0, float64(global.gWindowWidth), float64(global.gWindowHeight)),
 		VSync:  true,
 	}
-	win, err := pixelgl.NewWindow(cfg)
+	gWin, err := pixelgl.NewWindow(cfg)
 	if err != nil {
 		panic(err)
 	}
+	gWin.SetCursorVisible(false)
+	global.gWin = gWin
 
 	// Initialize world
-	path := "resources/dungeon.png"
-	batch, sprites := makeDungeon(path)
-	world := &World{}
-	world.Init()
-	world.InsertEntity(&PlayerEntity{
-		id:  0,
-		box: BoxComponent{16, 16},
-		render: RenderComponent{
-			sprite:      sprites["gold_knight"],
-			batch:       batch,
-			batchSource: "resources/dungeon.png",
-		},
-		speed: SpeedComponent{
-			xSpeed: 0,
-			ySpeed: 0,
-		},
-		pos: pixel.Vec{0, 0},
-	})
+	setup()
 
-	// Initialize camera
-	camera := &Camera{
-		camPos:       pixel.ZV,
-		camSpeed:     500.0,
-		camZoom:      1.0,
-		camZoomSpeed: 1.1,
-	}
-
-	// Game loop
-	last := time.Now()
-	for !win.Closed() {
-		dt := time.Since(last).Seconds()
-		last = time.Now()
-
-		world.registerActions(win, dt)
-
-		camera.Move(win)
-		camera.RegisterCameraAction(win, dt)
-
-		win.Clear(color.RGBA{70, 38, 54, 1})
-
-		world.Tick(win)
-
-		win.Update()
-	}
+	gameLoop()
 }
 
 func main() {

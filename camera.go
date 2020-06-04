@@ -2,34 +2,38 @@ package main
 
 import (
 	"github.com/faiface/pixel"
-	"github.com/faiface/pixel/pixelgl"
-	"math"
 )
 
 type Camera struct {
-	camPos       pixel.Vec
-	camSpeed     float64
-	camZoom      float64
-	camZoomSpeed float64
+	cam    pixel.Matrix
+	zoom   float64
+	pos    pixel.Vec
+	follow Entity
 }
 
-func (c *Camera) RegisterCameraAction(win *pixelgl.Window, dt float64) {
-	if win.Pressed(pixelgl.KeyLeft) {
-		c.camPos.X -= c.camSpeed * dt
-	}
-	if win.Pressed(pixelgl.KeyRight) {
-		c.camPos.X += c.camSpeed * dt
-	}
-	if win.Pressed(pixelgl.KeyDown) {
-		c.camPos.Y -= c.camSpeed * dt
-	}
-	if win.Pressed(pixelgl.KeyUp) {
-		c.camPos.Y += c.camSpeed * dt
-	}
-	c.camZoom *= math.Pow(c.camZoomSpeed, win.MouseScroll().Y)
+func (c *Camera) Init() {
+	c.setPosition(0, 0)
+	c.zoom = 1
+	c.follow = global.gPlayer
+	global.gWin.SetMatrix(c.cam)
 }
 
-func (c *Camera) Move(win *pixelgl.Window) {
-	mat := pixel.IM.Scaled(c.camPos, c.camZoom).Moved(win.Bounds().Center().Sub(c.camPos))
-	win.SetMatrix(mat)
+func (c *Camera) setPosition(x, y float64) {
+	c.pos = pixel.V(x, y)
+}
+
+// Update the camera's position based on the player's position
+func (c *Camera) Update(dt float64) {
+	pos := c.pos
+	if c.follow != nil {
+		pos = c.follow.GetPosition()
+	}
+
+	// Camera movement
+	//pos = pixel.Lerp(c.pos, pos, 1 - math.Pow(1.0 / 128, dt))
+	//c.cam = pixel.IM.Scaled(pos, c.zoom).Moved(pos)
+	//global.gWin.SetMatrix(c.cam)
+	global.gWin.SetMatrix(pixel.IM.Moved(global.gWin.Bounds().Center()))
+
+	c.pos = pos
 }

@@ -1,70 +1,39 @@
 package main
 
-import (
-	"github.com/faiface/pixel"
-	"github.com/faiface/pixel/pixelgl"
-	"reflect"
-)
+import "github.com/faiface/pixel"
 
 type World struct {
-	userEntityId    uint32
-	entities        []uint32
-	renderStorage   []RenderComponent
-	boxStorage      []BoxComponent
-	speedStorage    []SpeedComponent
-	positionStorage []pixel.Vec
-	batches         map[string]*pixel.Batch
+	width, height int
+	qt            QuadTree
 }
 
 func (w *World) Init() {
-	w.batches = make(map[string]*pixel.Batch)
+	w.qt = MakeQuadTree(float64(w.width), float64(w.height))
+
+	batch, sprites := makeDungeon(wResourcePath)
+	global.gTextures.batch = batch
+
+	global.gPlayer.Init(100, 100)
+	global.gPlayer.batch = batch
+	global.gPlayer.sprite = sprites["gold_knight"]
 }
 
-// This appends all attributes of the entity to each array in the world storage
-// Eventually this will need to also sort when adding entities
-func (w *World) InsertEntity(e Entity) {
-	eRender := e.GetRender()
+// Draw all spites in the current world
+func (w *World) Draw(dt float64) {
+	// TODO Draw background
+	global.gTextures.batch.Clear()
 
-	if reflect.TypeOf(e) == reflect.TypeOf(PlayerEntity{}) {
-		w.userEntityId = e.Id()
+	pos := pixel.ZV
+	if global.gCamera.follow != nil {
+		// Calculate camera position
+		pos = global.gCamera.follow.GetPosition()
+		pos.X -= float64(global.gWindowWidth) / 2
+		pos.Y -= float64(global.gWindowHeight) / 2
 	}
 
-	w.entities = append(w.entities, e.Id())
-	w.renderStorage = append(w.renderStorage, eRender)
-	w.boxStorage = append(w.boxStorage, e.GetBox())
-	w.speedStorage = append(w.speedStorage, e.GetSpeed())
-	w.positionStorage = append(w.positionStorage, e.GetPosition())
-
-	if w.batches[eRender.batchSource] == nil {
-		w.batches[eRender.batchSource] = eRender.batch
+	for _, obj := range w.qt.GetIntersections(&Bounds{X: pos.X, Y: pos.Y, width: float64(global.gWindowWidth), height: float64(global.gWindowHeight)}) {
+		obj.entity.Draw(dt)
 	}
-}
 
-func (w *World) registerActions(win *pixelgl.Window, dt float64) {
-	pos := &w.positionStorage[w.userEntityId]
-
-	if win.Pressed(pixelgl.KeyW) {
-		pos.Y += dt * 256
-	}
-	if win.Pressed(pixelgl.KeyA) {
-		pos.X -= dt * 256
-	}
-	if win.Pressed(pixelgl.KeyS) {
-		pos.Y -= dt * 256
-	}
-	if win.Pressed(pixelgl.KeyD) {
-		pos.X += dt * 256
-	}
-}
-
-func (w *World) RemoveEntity(e Entity) {
-
-}
-
-func (w *World) UpdateSystems() {
-
-}
-
-func (w *World) Tick(win *pixelgl.Window) {
-	runRenderSystem(w, win)
+	global.gTextures.batch.Draw(global.gWin)
 }
