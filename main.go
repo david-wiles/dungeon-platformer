@@ -17,6 +17,7 @@ func gameLoop() {
 
 		// Update systems
 
+		global.gController.Update(dt)
 		global.gCamera.Update(dt)
 		global.gWorld.Draw(dt)
 
@@ -25,17 +26,28 @@ func gameLoop() {
 }
 
 func setup() {
+	global.gTextures.Load(wTexturePath)
+
 	global.gWorld.Init()
+	global.gWorld.LoadMap()
+
+	global.gPlayer.Init(float64(global.gVariables.WindowWidth/2), float64(global.gVariables.WindowHeight/2))
+	global.gWorld.qt.Insert(global.gPlayer.bounds)
+
 	global.gCamera.Init()
-	global.gTextures.Load(wConfigFile)
 	global.gCamera.follow = global.gPlayer
+	global.gController.Init()
+	global.gHud.Init()
+	global.gMainMenu.Init()
 }
 
 func run() {
+	global.gVariables.Load(wConfigFile)
+
 	// Initialize window
 	cfg := pixelgl.WindowConfig{
-		Title:  "Hello from pixel!",
-		Bounds: pixel.R(0, 0, float64(global.gWindowWidth), float64(global.gWindowHeight)),
+		Title:  wWindowTitle,
+		Bounds: pixel.R(0, 0, float64(global.gVariables.WindowWidth), float64(global.gVariables.WindowHeight)),
 		VSync:  true,
 	}
 	gWin, err := pixelgl.NewWindow(cfg)
@@ -45,7 +57,6 @@ func run() {
 	gWin.SetCursorVisible(false)
 	global.gWin = gWin
 
-	// Initialize world
 	setup()
 
 	gameLoop()

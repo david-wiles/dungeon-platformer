@@ -1,0 +1,15 @@
+{
+  "MapName": "The Dungeon",
+  "Entities": [
+    {
+      "BlockType": "wall",
+      "X": 100,
+      "Y": 100
+    },
+    {
+      "BlockType": "wall",
+      "X": 116,
+      "Y": 100
+    }
+  ]
+}

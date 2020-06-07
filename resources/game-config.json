@@ -1,0 +1,10 @@
+{
+  "Vsync": true,
+  "Fullscreen": true,
+  "WindowHeight": 480,
+  "WindowWidth": 640,
+  "KeyJump": "w",
+  "KeyLeft": "a",
+  "KeyRight": "d",
+  "KeyDuck": "s"
+}

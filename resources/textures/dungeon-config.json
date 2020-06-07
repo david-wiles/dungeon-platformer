@@ -1,0 +1,138 @@
+{
+  "filename": "resources/textures/dungeon.png",
+  "sprites": [
+    {
+      "name": "gold_knight",
+      "X": 240,
+      "Y": 0,
+      "W": 16,
+      "H": 16
+    },
+    {
+      "name": "blue_knight",
+      "X": 224,
+      "Y": 0,
+      "W": 16,
+      "H": 16
+    },
+    {
+      "name": "green_knight",
+      "X": 208,
+      "Y": 0,
+      "W": 16,
+      "H": 16
+    },
+    {
+      "name": "yellow_knight",
+      "X": 192,
+      "Y": 0,
+      "W": 16,
+      "H": 16
+    },
+    {
+      "name": "tall_yellow_creep",
+      "X": 0,
+      "Y": 16,
+      "W": 16,
+      "H": 16
+    },
+    {
+      "name": "short_yellow_creep",
+      "X": 16,
+      "Y": 16,
+      "W": 16,
+      "H": 16
+    },
+    {
+      "name": "tall_green_creep",
+      "X": 32,
+      "Y": 16,
+      "W": 16,
+      "H": 16
+    },
+    {
+      "name": "short_green_creep",
+      "X": 48,
+      "Y": 16,
+      "W": 16,
+      "H": 16
+    },
+    {
+      "name": "short_gray_rock_creep",
+      "X": 0,
+      "Y": 32,
+      "W": 16,
+      "H": 16
+    },
+    {
+      "name": "short_blue_rock_creep",
+      "X": 16,
+      "Y": 32,
+      "W": 16,
+      "H": 16
+    },
+    {
+      "name": "short_flame_creep",
+      "X": 32,
+      "Y": 32,
+      "W": 16,
+      "H": 16
+    },
+    {
+      "name": "short_ghost_creep",
+      "X": 48,
+      "Y": 32,
+      "W": 16,
+      "H": 16
+    },
+    {
+      "name": "floor",
+      "X": 0,
+      "Y": 240,
+      "W": 16,
+      "H": 16
+    },
+    {
+      "name": "long_floor",
+      "X": 0,
+      "Y": 240,
+      "W": 48,
+      "H": 16
+    },
+    {
+      "name": "wall",
+      "X": 0,
+      "Y": 224,
+      "W": 16,
+      "H": 16
+    },
+    {
+      "name": "long_wall",
+      "X": 0,
+      "Y": 224,
+      "W": 48,
+      "H": 16
+    },
+    {
+      "name": "slime_wall",
+      "X": 48,
+      "Y": 224,
+      "W": 16,
+      "H": 16
+    },
+    {
+      "name": "low_hole",
+      "X": 48,
+      "Y": 240,
+      "W": 16,
+      "H": 16
+    },
+    {
+      "name": "tall_hole",
+      "X": 64,
+      "Y": 240,
+      "W": 16,
+      "H": 16
+    }
+  ]
+}

@@ -15,3 +15,7 @@ type Hud struct {
 	lifeCanvas     *pixelgl.Canvas
 	playerLife     float64
 }
+
+func (h *Hud) Init() {
+
+}
