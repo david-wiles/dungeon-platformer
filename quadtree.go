@@ -6,29 +6,29 @@ package main
 
 type QuadTree struct {
 	level   int        // The level of this node
-	box     Bounds     // The bounds of this quadtree in world space
-	objects []*Bounds  // Objects located within the bounds of this quadtree node
+	box     Bounds     // The Bounds of this quadtree in world space
+	objects []*Bounds  // Objects located within the Bounds of this quadtree node
 	nodes   []QuadTree // Child nodes
 	count   int        // The number of objects in this tree and its children
 }
 
 // Representation of an entity's hit box
 type Bounds struct {
-	X, Y, width, height float64
+	X, Y, Width, Height float64
 	entity              Entity
 }
 
 func (b *Bounds) IsPoint() bool {
-	return b.height == 0 && b.width == 0
+	return b.Height == 0 && b.Width == 0
 }
 
-func (this *Bounds) Intersects(cmp *Bounds) bool {
-	thisMaxX := this.X + this.width
-	thisMaxY := this.Y + this.height
-	cmpMaxX := cmp.X + cmp.width
-	cmpMaxY := cmp.Y + cmp.height
+func (b *Bounds) Intersects(cmp *Bounds) bool {
+	thisMaxX := b.X + b.Width
+	thisMaxY := b.Y + b.Height
+	cmpMaxX := cmp.X + cmp.Width
+	cmpMaxY := cmp.Y + cmp.Height
 
-	if thisMaxX < cmp.X || this.X > cmpMaxX || thisMaxY < cmp.Y || this.Y > cmpMaxY {
+	if thisMaxX < cmp.X || b.X > cmpMaxX || thisMaxY < cmp.Y || b.Y > cmpMaxY {
 		return false
 	}
 
@@ -42,8 +42,8 @@ func MakeQuadTree(w, h float64) QuadTree {
 		box: Bounds{
 			X:      0,
 			Y:      0,
-			width:  w,
-			height: h,
+			Width:  w,
+			Height: h,
 		},
 		objects: make([]*Bounds, 0),
 		nodes:   make([]QuadTree, 0, 4),
@@ -131,13 +131,13 @@ func (q *QuadTree) removeAux(qt *QuadTree, b *Bounds) bool {
 // Get the index of the QuadTree node that this box should be added to.  Returns a number 0 - 3
 func (q *QuadTree) getIndex(b *Bounds) int {
 	// Get midpoint for this node's box.  This corresponds to the boundary of each child node
-	vMidPoint := q.box.X + q.box.width/2
-	hMidPoint := q.box.Y + q.box.height/2
+	vMidPoint := q.box.X + q.box.Width/2
+	hMidPoint := q.box.Y + q.box.Height/2
 
 	// Determine if the box can fit entirely within a hemisphere
-	top := b.Y < hMidPoint && b.Y+b.height < hMidPoint
+	top := b.Y < hMidPoint && b.Y+b.Height < hMidPoint
 	bot := b.Y > hMidPoint
-	left := b.X < vMidPoint && b.X+b.width < vMidPoint
+	left := b.X < vMidPoint && b.X+b.Width < vMidPoint
 	right := b.X > vMidPoint
 
 	if top {
@@ -166,8 +166,8 @@ func (q *QuadTree) split() {
 	}
 
 	nextLevel := q.level + 1
-	width := q.box.width / 2
-	height := q.box.height / 2
+	width := q.box.Width / 2
+	height := q.box.Height / 2
 
 	// top right
 	q.nodes = append(q.nodes, QuadTree{
@@ -175,8 +175,8 @@ func (q *QuadTree) split() {
 		box: Bounds{
 			X:      q.box.X + width,
 			Y:      q.box.Y + height,
-			width:  width,
-			height: height,
+			Width:  width,
+			Height: height,
 		},
 		objects: make([]*Bounds, 0),
 		nodes:   make([]QuadTree, 0, 4),
@@ -188,8 +188,8 @@ func (q *QuadTree) split() {
 		box: Bounds{
 			X:      q.box.X,
 			Y:      q.box.Y + height,
-			width:  width,
-			height: height,
+			Width:  width,
+			Height: height,
 		},
 		objects: make([]*Bounds, 0),
 		nodes:   make([]QuadTree, 0, 4),
@@ -201,8 +201,8 @@ func (q *QuadTree) split() {
 		box: Bounds{
 			X:      q.box.X,
 			Y:      q.box.Y,
-			width:  width,
-			height: height,
+			Width:  width,
+			Height: height,
 		},
 		objects: make([]*Bounds, 0),
 		nodes:   make([]QuadTree, 0, 4),
@@ -214,8 +214,8 @@ func (q *QuadTree) split() {
 		box: Bounds{
 			X:      q.box.X + width,
 			Y:      q.box.Y,
-			width:  width,
-			height: height,
+			Width:  width,
+			Height: height,
 		},
 		objects: make([]*Bounds, 0),
 		nodes:   make([]QuadTree, 0, 4),

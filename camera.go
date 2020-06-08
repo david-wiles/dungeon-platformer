@@ -20,20 +20,23 @@ func (c *Camera) Init() {
 	c.bounds = Bounds{
 		X:      0,
 		Y:      0,
-		width:  float64(global.gVariables.WindowWidth),
-		height: float64(global.gVariables.WindowHeight),
+		Width:  float64(global.gVariables.WindowWidth),
+		Height: float64(global.gVariables.WindowHeight),
 		entity: nil,
 	}
 	global.gWin.SetMatrix(c.cam)
 }
 
 // Update the camera's position based on the player's position
+// TODO follow other entities?
 func (c *Camera) Update(dt float64) {
 	pos := c.pos
 	if c.follow != nil {
 		pos = c.follow.GetPosition()
-		pos.X -= float64(global.gVariables.WindowWidth / 2)
-		pos.Y -= float64(global.gVariables.WindowHeight / 2)
+		// Get position returns the lower left corner of the entity
+		// TODO improve efficiency, save the center position
+		pos.X -= float64(global.gVariables.WindowWidth/2) - global.gPlayer.Bounds.Width/2
+		pos.Y -= float64(global.gVariables.WindowHeight/2) - global.gPlayer.Bounds.Height/2
 		c.bounds.Y = pos.Y
 		c.bounds.X = pos.X
 	}
@@ -46,7 +49,7 @@ func (c *Camera) Update(dt float64) {
 	c.pos = pos
 }
 
-// Easy access to the bounds object for this camera
+// Easy access to the Bounds object for this camera
 func (c *Camera) Bounds() *Bounds {
 	return &c.bounds
 }

@@ -2,14 +2,24 @@
   "MapName": "The Dungeon",
   "Entities": [
     {
-      "BlockType": "wall",
-      "X": 100,
-      "Y": 100
+      "BlockType": "long_platform",
+      "X": 0,
+      "Y": 0
     },
     {
-      "BlockType": "wall",
-      "X": 116,
-      "Y": 100
+      "BlockType": "long_platform",
+      "X": 48,
+      "Y": 0
+    },
+    {
+      "BlockType": "long_platform",
+      "X": 96,
+      "Y": 0
+    },
+    {
+      "BlockType": "long_platform",
+      "X": 144,
+      "Y": 0
     }
   ]
 }

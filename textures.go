@@ -9,14 +9,13 @@ import (
 
 type Textures struct {
 	batch   *pixel.Batch
-	sprites map[string]*pixel.Sprite
-	objects []*Sprite
+	sprites map[string]*Sprite
 }
 
 type Sprite struct {
-	name  string
-	pos   pixel.Vec
-	scale float64
+	Frame  *pixel.Sprite
+	Width  float64
+	Height float64
 }
 
 // For parsing config
@@ -37,13 +36,10 @@ type spriteConfig struct {
 // TODO use json config to loadBatch batches and sprites instead of hardcoded
 func (t *Textures) Load(file string) {
 	t.batch, t.sprites = loadBatch(file)
-
-	global.gPlayer.batch = global.gTextures.batch
-	global.gPlayer.sprite = global.gTextures.sprites["gold_knight"]
 }
 
 // Loads a batch and associated sprites from a config file
-func loadBatch(path string) (*pixel.Batch, map[string]*pixel.Sprite) {
+func loadBatch(path string) (*pixel.Batch, map[string]*Sprite) {
 	file, err := os.Open(path)
 	if err != nil {
 		panic(err)
@@ -61,7 +57,7 @@ func loadBatch(path string) (*pixel.Batch, map[string]*pixel.Sprite) {
 	if err != nil {
 		panic(err)
 	}
-	sprites := make(map[string]*pixel.Sprite)
+	sprites := make(map[string]*Sprite)
 
 	for _, s := range tConfig.Sprites {
 		sprites[s.Name] = loadSprite(sheet, s)
@@ -70,8 +66,12 @@ func loadBatch(path string) (*pixel.Batch, map[string]*pixel.Sprite) {
 	return pixel.NewBatch(&pixel.TrianglesData{}, sheet), sprites
 }
 
-func loadSprite(p pixel.Picture, s spriteConfig) *pixel.Sprite {
-	return pixel.NewSprite(p, pixel.R(s.X, s.Y, s.X+s.W, s.Y+s.H))
+func loadSprite(p pixel.Picture, s spriteConfig) *Sprite {
+	return &Sprite{
+		Frame:  pixel.NewSprite(p, pixel.R(s.X, s.Y, s.X+s.W, s.Y+s.H)),
+		Width:  s.W,
+		Height: s.H,
+	}
 }
 
 // Load a picture from an image file

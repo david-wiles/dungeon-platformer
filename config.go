@@ -19,13 +19,11 @@ const (
 )
 
 var global = &Global{
-	gScale:    4,
-	gVsync:    true,
-	gWorld:    &World{},
-	gTextures: &Textures{},
-	gPlayer: &Mob{
-		Graphics: Graphics{},
-	},
+	gScale:      4,
+	gVsync:      true,
+	gWorld:      &World{},
+	gTextures:   &Textures{},
+	gPlayer:     &Mob{},
 	gCamera:     &Camera{},
 	gController: &Controller{},
 	gWin:        &pixelgl.Window{},

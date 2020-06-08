@@ -31,8 +31,8 @@ func setup() {
 	global.gWorld.Init()
 	global.gWorld.LoadMap()
 
-	global.gPlayer.Init(float64(global.gVariables.WindowWidth/2), float64(global.gVariables.WindowHeight/2))
-	global.gWorld.qt.Insert(global.gPlayer.bounds)
+	global.gPlayer.Init(global.gTextures.sprites["gold_knight"], float64(global.gVariables.WindowWidth/2), float64(global.gVariables.WindowHeight/2))
+	global.gWorld.qt.Insert(global.gPlayer.Bounds)
 
 	global.gCamera.Init()
 	global.gCamera.follow = global.gPlayer
