@@ -80,7 +80,8 @@
       "BlockType": "long_ceiling",
       "X": 192,
       "Y": 72
-    },    {
+    },
+    {
       "BlockType": "wall",
       "X": 240,
       "Y": 0

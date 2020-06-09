@@ -31,9 +31,7 @@ func setup() {
 	global.gWorld.Init()
 	global.gWorld.LoadMap()
 
-	global.gPlayer.Init(global.gTextures.sprites["gold_knight"],
-		float64(global.gVariables.WindowWidth/2),
-		float64(global.gVariables.WindowHeight/2))
+	global.gPlayer.Init(global.gTextures.sprites["gold_knight"], 0, 20 * global.gScale)
 	global.gWorld.qt.Insert(global.gPlayer.Bounds)
 
 	global.gCamera.Init()
@@ -49,7 +47,10 @@ func run() {
 	// Initialize window
 	cfg := pixelgl.WindowConfig{
 		Title:  wWindowTitle,
-		Bounds: pixel.R(0, 0, float64(global.gVariables.WindowWidth), float64(global.gVariables.WindowHeight)),
+		Bounds: pixel.R(float64(global.gVariables.WindowWidth/-2),
+			float64(global.gVariables.WindowHeight/-2),
+			float64(global.gVariables.WindowWidth/2),
+			float64(global.gVariables.WindowHeight/2)),
 		VSync:  true,
 	}
 	gWin, err := pixelgl.NewWindow(cfg)

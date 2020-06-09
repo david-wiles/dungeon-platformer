@@ -4,10 +4,10 @@ import "github.com/faiface/pixel"
 
 type Mob struct {
 	Graphics
-	Bounds   *Bounds
-	hp       float64
-	maxLife  float64
-	drawFunc func(dt float64)
+	*Bounds
+	*Physics
+	hp      float64
+	maxLife float64
 }
 
 // Uses the default spritesheet to create a mob
@@ -31,15 +31,15 @@ func (m *Mob) Draw(dt float64) {
 
 // Gets the center of the entity
 func (m *Mob) GetDrawVector() pixel.Vec {
-	return pixel.V(m.Bounds.X+(m.Bounds.Width*global.gScale)/2, m.Bounds.Y+(m.Bounds.Height*global.gScale)/2)
+	return pixel.V(m.X+(m.Width*global.gScale)/2, m.Y+(m.Height*global.gScale)/2)
 }
 
 func (m *Mob) GetPosition() pixel.Vec {
-	return pixel.Vec{m.Bounds.X, m.Bounds.Y}
+	return pixel.Vec{m.X, m.Y}
 }
 
 func (m *Mob) Move(move pixel.Vec) {
 	// TODO handle physics (gravity, etc)
-	m.Bounds.X += move.X
-	m.Bounds.Y += move.Y
+	m.X += move.X
+	m.Y += move.Y
 }

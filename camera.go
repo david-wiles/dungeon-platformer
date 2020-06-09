@@ -35,10 +35,10 @@ func (c *Camera) Update(dt float64) {
 		pos = c.follow.GetPosition()
 		// Get position returns the lower left corner of the entity
 		// TODO improve efficiency, save the center position
-		pos.X -= float64(global.gVariables.WindowWidth/2) - global.gPlayer.Bounds.Width/2
-		pos.Y -= float64(global.gVariables.WindowHeight/2) - global.gPlayer.Bounds.Height/2
-		c.bounds.Y = pos.Y
-		c.bounds.X = pos.X
+		pos.X -= global.gPlayer.Bounds.Width/2
+		pos.Y -= global.gPlayer.Bounds.Height/2
+		c.bounds.X = pos.X - float64(global.gVariables.WindowWidth/2)
+		c.bounds.Y = pos.Y - float64(global.gVariables.WindowHeight/2)
 	}
 
 	// Camera movement
