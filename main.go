@@ -55,7 +55,7 @@ func run() {
 	if err != nil {
 		panic(err)
 	}
-	gWin.SetCursorVisible(false)
+	//gWin.SetCursorVisible(false)
 	global.gWin = gWin
 
 	setup()
