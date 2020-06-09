@@ -2,6 +2,36 @@
   "MapName": "The Dungeon",
   "Entities": [
     {
+      "BlockType": "wall",
+      "X": -16,
+      "Y": 0
+    },
+    {
+      "BlockType": "wall",
+      "X": -16,
+      "Y": 16
+    },
+    {
+      "BlockType": "wall",
+      "X": -16,
+      "Y": 32
+    },
+    {
+      "BlockType": "wall",
+      "X": -16,
+      "Y": 48
+    },
+    {
+      "BlockType": "wall",
+      "X": -16,
+      "Y": 64
+    },
+    {
+      "BlockType": "wall",
+      "X": -16,
+      "Y": 80
+    },
+    {
       "BlockType": "long_platform",
       "X": 0,
       "Y": 0
@@ -20,6 +50,65 @@
       "BlockType": "long_platform",
       "X": 144,
       "Y": 0
+    },
+    {
+      "BlockType": "long_platform",
+      "X": 192,
+      "Y": 0
+    },
+    {
+      "BlockType": "long_ceiling",
+      "X": 0,
+      "Y": 72
+    },
+    {
+      "BlockType": "long_ceiling",
+      "X": 48,
+      "Y": 72
+    },
+    {
+      "BlockType": "long_ceiling",
+      "X": 96,
+      "Y": 72
+    },
+    {
+      "BlockType": "long_ceiling",
+      "X": 144,
+      "Y": 72
+    },
+    {
+      "BlockType": "long_ceiling",
+      "X": 192,
+      "Y": 72
+    },    {
+      "BlockType": "wall",
+      "X": 240,
+      "Y": 0
+    },
+    {
+      "BlockType": "wall",
+      "X": 240,
+      "Y": 16
+    },
+    {
+      "BlockType": "wall",
+      "X": 240,
+      "Y": 32
+    },
+    {
+      "BlockType": "wall",
+      "X": 240,
+      "Y": 48
+    },
+    {
+      "BlockType": "wall",
+      "X": 240,
+      "Y": 64
+    },
+    {
+      "BlockType": "wall",
+      "X": 240,
+      "Y": 80
     }
   ]
 }

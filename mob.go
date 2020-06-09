@@ -29,7 +29,7 @@ func (m *Mob) Draw(dt float64) {
 	m.sprite.Draw(m.batch, pixel.IM.Scaled(pixel.ZV, global.gScale).Moved(m.GetDrawVector()))
 }
 
-// Gets the lower left corner of the Bounds
+// Gets the center of the entity
 func (m *Mob) GetDrawVector() pixel.Vec {
 	return pixel.V(m.Bounds.X+(m.Bounds.Width*global.gScale)/2, m.Bounds.Y+(m.Bounds.Height*global.gScale)/2)
 }
