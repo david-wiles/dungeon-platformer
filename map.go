@@ -41,7 +41,7 @@ func loadMap(filename string) {
 	for _, obj := range mConfig.Entities {
 		var entity Platform
 		entity.Init(global.gTextures.sprites[obj.BlockType], obj.X*global.gScale, obj.Y*global.gScale)
-		global.gWorld.qt.Insert(entity.Bounds)
+		global.gWorld.qt.Insert(entity.Bounds())
 	}
 
 }

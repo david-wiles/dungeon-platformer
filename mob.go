@@ -4,42 +4,47 @@ import "github.com/faiface/pixel"
 
 type Mob struct {
 	Graphics
-	*Bounds
 	*Physics
-	hp      float64
-	maxLife float64
+	DrawCenter pixel.Vec
 }
 
-// Uses the default spritesheet to create a mob
+// Uses the default sprite sheet to create a mob
 func (m *Mob) Init(s *Sprite, x float64, y float64) {
 	m.Graphics = Graphics{
 		sprite: s.Frame,
 		batch:  global.gTextures.batch,
 	}
-	m.Bounds = &Bounds{
-		X:      x,
-		Y:      y,
-		Width:  s.Width,
-		Height: s.Height,
-		entity: m,
+	m.Physics = &Physics{
+		Bounds: &Bounds{
+			X:      x,
+			Y:      y,
+			Width:  s.Width,
+			Height: s.Height,
+			entity: m,
+		},
+		Velocity: pixel.ZV,
+		entity:   m,
 	}
+	m.DrawCenter = pixel.V(m.Bounds().GetDrawCenter())
 }
 
 func (m *Mob) Draw(dt float64) {
-	m.sprite.Draw(m.batch, pixel.IM.Scaled(pixel.ZV, global.gScale).Moved(m.GetDrawVector()))
+	m.sprite.Draw(m.batch, pixel.IM.Scaled(pixel.ZV, global.gScale).Moved(m.DrawCenter))
 }
 
-// Gets the center of the entity
-func (m *Mob) GetDrawVector() pixel.Vec {
-	return pixel.V(m.X+(m.Width*global.gScale)/2, m.Y+(m.Height*global.gScale)/2)
+func (m *Mob) GetDrawCenter() pixel.Vec {
+	return m.DrawCenter
+}
+
+func (m *Mob) Bounds() *Bounds {
+	return m.Physics.Bounds
 }
 
 func (m *Mob) GetPosition() pixel.Vec {
-	return pixel.Vec{m.X, m.Y}
+	return pixel.Vec{m.Bounds().X, m.Bounds().Y}
 }
 
-func (m *Mob) Move(move pixel.Vec) {
-	// TODO handle physics (gravity, etc)
-	m.X += move.X
-	m.Y += move.Y
+func (m *Mob) Move(move Move) {
+	m.Physics.Update(move)
+	m.DrawCenter = pixel.V(m.Bounds().GetDrawCenter())
 }

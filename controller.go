@@ -1,7 +1,6 @@
 package main
 
 import (
-	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
 )
 
@@ -11,6 +10,15 @@ type Controller struct {
 	keyRight pixelgl.Button
 	keyLeft  pixelgl.Button
 	keyDuck  pixelgl.Button
+}
+
+// Contains possible moves that a user or AI made during the tick
+// For example, could contain a move left and a jump
+type Move struct {
+	Jump  bool
+	Duck  bool
+	Left  bool
+	Right bool
 }
 
 // Register action buttons from config file
@@ -26,19 +34,19 @@ func (c *Controller) Init() {
 
 // Listen for keys pressed and updates position of the entity
 func (c *Controller) Update(dt float64) {
-	var move pixel.Vec
+	var move Move
 
 	if global.gWin.Pressed(c.keyJump) {
-		move.Y += dt * 500
+		move.Jump = true
 	}
 	if global.gWin.Pressed(c.keyLeft) {
-		move.X -= dt * 500
+		move.Left = true
 	}
 	if global.gWin.Pressed(c.keyRight) {
-		move.X += dt * 500
+		move.Right = true
 	}
 	if global.gWin.Pressed(c.keyDuck) {
-		move.Y -= dt * 500
+		move.Duck = true
 	}
 
 	c.entity.Move(move)

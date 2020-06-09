@@ -6,7 +6,8 @@ import (
 
 type Platform struct {
 	Graphics
-	*Bounds
+	*Physics
+	DrawCenter pixel.Vec
 }
 
 func (p *Platform) Init(s *Sprite, x float64, y float64) {
@@ -14,27 +15,36 @@ func (p *Platform) Init(s *Sprite, x float64, y float64) {
 		sprite: s.Frame,
 		batch:  global.gTextures.batch,
 	}
-	p.Bounds = &Bounds{
-		X:      x,
-		Y:      y,
-		Width:  s.Width,
-		Height: s.Height,
-		entity: p,
+	p.Physics = &Physics{
+		Bounds: &Bounds{
+			X:      x,
+			Y:      y,
+			Width:  s.Width,
+			Height: s.Height,
+			entity: p,
+		},
+		Velocity: pixel.ZV,
+		entity:   p,
 	}
+	p.DrawCenter = pixel.V(p.Bounds().GetDrawCenter())
 }
 
 func (p *Platform) Draw(dt float64) {
-	p.sprite.Draw(p.batch, pixel.IM.Scaled(pixel.ZV, global.gScale).Moved(p.GetDrawVector()))
+	p.sprite.Draw(p.batch, pixel.IM.Scaled(pixel.ZV, global.gScale).Moved(p.DrawCenter))
+}
+
+func (p *Platform) GetDrawCenter() pixel.Vec {
+	return p.DrawCenter
+}
+
+func (p *Platform) Bounds() *Bounds {
+	return p.Physics.Bounds
 }
 
 func (p *Platform) GetPosition() pixel.Vec {
 	return pixel.V(p.X, p.Y)
 }
 
-func (p *Platform) GetDrawVector() pixel.Vec {
-	return pixel.V(p.X+(p.Width*global.gScale)/2, p.Y+(p.Height*global.gScale)/2)
-}
-
-func (p *Platform) Move(vec pixel.Vec) {
-	// Platforms don't move
+func (p *Platform) Move(Move) {
+	// Platforms don't move ;.;
 }

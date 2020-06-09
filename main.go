@@ -15,8 +15,6 @@ func gameLoop() {
 
 		global.gWin.Clear(global.gClearColor)
 
-		// Update systems
-
 		global.gController.Update(dt)
 		global.gCamera.Update(dt)
 		global.gWorld.Draw(dt)
@@ -31,8 +29,8 @@ func setup() {
 	global.gWorld.Init()
 	global.gWorld.LoadMap()
 
-	global.gPlayer.Init(global.gTextures.sprites["gold_knight"], 0, 20 * global.gScale)
-	global.gWorld.qt.Insert(global.gPlayer.Bounds)
+	global.gPlayer.Init(global.gTextures.sprites["gold_knight"], 0, 20*global.gScale)
+	global.gWorld.qt.Insert(global.gPlayer.Bounds())
 
 	global.gCamera.Init()
 	global.gCamera.follow = global.gPlayer
@@ -46,12 +44,12 @@ func run() {
 
 	// Initialize window
 	cfg := pixelgl.WindowConfig{
-		Title:  wWindowTitle,
+		Title: wWindowTitle,
 		Bounds: pixel.R(float64(global.gVariables.WindowWidth/-2),
 			float64(global.gVariables.WindowHeight/-2),
 			float64(global.gVariables.WindowWidth/2),
 			float64(global.gVariables.WindowHeight/2)),
-		VSync:  true,
+		VSync: true,
 	}
 	gWin, err := pixelgl.NewWindow(cfg)
 	if err != nil {

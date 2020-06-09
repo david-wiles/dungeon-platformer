@@ -32,11 +32,7 @@ func (c *Camera) Init() {
 func (c *Camera) Update(dt float64) {
 	pos := c.pos
 	if c.follow != nil {
-		pos = c.follow.GetPosition()
-		// Get position returns the lower left corner of the entity
-		// TODO improve efficiency, save the center position
-		pos.X -= global.gPlayer.Bounds.Width/2
-		pos.Y -= global.gPlayer.Bounds.Height/2
+		pos = c.follow.GetDrawCenter()
 		c.bounds.X = pos.X - float64(global.gVariables.WindowWidth/2)
 		c.bounds.Y = pos.Y - float64(global.gVariables.WindowHeight/2)
 	}
