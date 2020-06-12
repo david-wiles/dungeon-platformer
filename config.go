@@ -61,10 +61,6 @@ type VariableConfig struct {
 	Fullscreen   bool    `json:"Fullscreen"`
 	WindowHeight float64 `json:"WindowHeight"`
 	WindowWidth  float64 `json:"WindowWidth"`
-	KeyJump      string  `json:"KeyJump"`
-	KeyLeft      string  `json:"KeyLeft"`
-	KeyRight     string  `json:"KeyRight"`
-	KeyDuck      string  `json:"KeyDuck"`
 }
 
 // Load variables config from file

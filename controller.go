@@ -16,8 +16,6 @@ type Controller struct {
 // Register action buttons from config file
 func (c *Controller) Init() {
 	c.entity = global.gPlayer
-
-	// TODO Loop through keyboard to determine key button or find a better way
 	c.keyJump = pixelgl.KeyW
 	c.keyRight = pixelgl.KeyD
 	c.keyLeft = pixelgl.KeyA

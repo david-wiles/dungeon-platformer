@@ -53,10 +53,6 @@ func (c *Camera) Init() {
 	global.gWin.SetMatrix(c.cam)
 }
 
-func (c *Camera) SetControls(config VariableConfig) {
-	// TODO make camera controls configurable
-}
-
 // Update the camera's position based on the player's position.
 // This should be disabled when the camera is not currently following an entity
 func (c *Camera) Update(dt float64) {
