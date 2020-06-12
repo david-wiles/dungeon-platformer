@@ -27,16 +27,16 @@ func (c *Controller) Update(dt float64) {
 	var move pixel.Vec
 
 	if global.gWin.Pressed(c.keyJump) {
-		move.Y += dt * 500
+		move.Y += dt * 100
 	}
 	if global.gWin.Pressed(c.keyLeft) {
-		move.X -= dt * 500
+		move.X -= dt * 100
 	}
 	if global.gWin.Pressed(c.keyRight) {
-		move.X += dt * 500
+		move.X += dt * 100
 	}
 	if global.gWin.Pressed(c.keyDuck) {
-		move.Y -= dt * 500
+		move.Y -= dt * 100
 	}
 
 	c.entity.Move(move)
