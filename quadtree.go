@@ -22,7 +22,6 @@ func (b *Bounds) IsPoint() bool {
 	return b.Height == 0 && b.Width == 0
 }
 
-// TODO implement collisions separate from drawing to reduce multiplication
 func (b *Bounds) Intersects(cmp *Bounds) bool {
 	thisMaxX := b.X + b.Width
 	thisMaxY := b.Y + b.Height

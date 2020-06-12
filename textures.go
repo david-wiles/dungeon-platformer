@@ -33,7 +33,6 @@ type spriteConfig struct {
 }
 
 // Loads all textures from specified configuration
-// TODO use json config to loadBatch batches and sprites instead of hardcoded
 func (t *Textures) Load(file string) {
 	t.batch, t.sprites = loadBatch(file)
 }
