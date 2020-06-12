@@ -14,7 +14,7 @@ func (w *World) Draw(dt float64) {
 	global.gTextures.batch.Clear()
 
 	bounds := &Bounds{}
-	if global.gCamera.follow != nil {
+	if global.gCamera.Follow != nil {
 		bounds = global.gCamera.Bounds()
 	}
 

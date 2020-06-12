@@ -26,12 +26,12 @@ func (m *Mob) Init(s *Sprite, x float64, y float64) {
 }
 
 func (m *Mob) Draw(dt float64) {
-	m.sprite.Draw(m.batch, pixel.IM.Scaled(pixel.ZV, global.gScale).Moved(m.GetDrawVector()))
+	m.sprite.Draw(m.batch, pixel.IM.Moved(m.GetDrawVector()))
 }
 
 // Gets the center of the entity
 func (m *Mob) GetDrawVector() pixel.Vec {
-	return pixel.V(m.Bounds.X+(m.Bounds.Width*global.gScale)/2, m.Bounds.Y+(m.Bounds.Height*global.gScale)/2)
+	return pixel.V(m.Bounds.X+m.Bounds.Width/2, m.Bounds.Y+m.Bounds.Height/2)
 }
 
 func (m *Mob) GetPosition() pixel.Vec {

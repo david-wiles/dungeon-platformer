@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+// Game loop which conducts the game. This represents each 'tick' of the world
 func gameLoop() {
 	last := time.Now()
 	for !global.gWin.Closed() {
@@ -25,6 +26,7 @@ func gameLoop() {
 	}
 }
 
+// Sets up all global variables and objects
 func setup() {
 	global.gTextures.Load(wTexturePath)
 
@@ -32,24 +34,28 @@ func setup() {
 	global.gWorld.LoadMap()
 
 	global.gPlayer.Init(global.gTextures.sprites["gold_knight"],
-		float64(global.gVariables.WindowWidth/2),
-		float64(global.gVariables.WindowHeight/2))
+		global.gVariables.WindowWidth/2,
+		global.gVariables.WindowHeight/2)
 	global.gWorld.qt.Insert(global.gPlayer.Bounds)
 
 	global.gCamera.Init()
-	global.gCamera.follow = global.gPlayer
+
+	global.gCamera.Follow = global.gPlayer
 	global.gController.Init()
 	global.gHud.Init()
 	global.gMainMenu.Init()
 }
 
+// Function which runs execution of the program in window
+// Everything in this loop will be run on the main thread.
+// It is only necessary that graphics code run on this thread
 func run() {
 	global.gVariables.Load(wConfigFile)
 
 	// Initialize window
 	cfg := pixelgl.WindowConfig{
 		Title:  wWindowTitle,
-		Bounds: pixel.R(0, 0, float64(global.gVariables.WindowWidth), float64(global.gVariables.WindowHeight)),
+		Bounds: pixel.R(0, 0, global.gVariables.WindowWidth, global.gVariables.WindowHeight),
 		VSync:  true,
 	}
 	gWin, err := pixelgl.NewWindow(cfg)
@@ -64,6 +70,7 @@ func run() {
 	gameLoop()
 }
 
+// Entry point for the program
 func main() {
 	pixelgl.Run(run)
 }

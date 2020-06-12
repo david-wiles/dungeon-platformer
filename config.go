@@ -8,6 +8,7 @@ import (
 	"os"
 )
 
+// Global constants
 const (
 	wWindowTitle = "Hello from the Dungeon"
 	wVersion     = "0.0.1"
@@ -18,8 +19,9 @@ const (
 	qtMaxLevels  = 4
 )
 
+// The global Global object
+// Allocates memory for each object to be initialized in main
 var global = &Global{
-	gScale:      4,
 	gVsync:      true,
 	gWorld:      &World{},
 	gTextures:   &Textures{},
@@ -34,6 +36,8 @@ var global = &Global{
 	gVariables:  &VariableConfig{},
 }
 
+// Global struct containing singleton objects for each instance of the game
+// gVariables contains global constants that can be modified and saved by the user.
 type Global struct {
 	gScale      float64
 	gVsync      bool
@@ -50,18 +54,20 @@ type Global struct {
 	gVariables  *VariableConfig
 }
 
+// VariableConfig contains configurations defined by the user.  This includes
+// control keys, window size, and other configurations
 type VariableConfig struct {
-	Vsync        bool   `json:"Vsync"`
-	Fullscreen   bool   `json:"Fullscreen"`
-	WindowHeight int    `json:"WindowHeight"`
-	WindowWidth  int    `json:"WindowWidth"`
-	KeyJump      string `json:"KeyJump"`
-	KeyLeft      string `json:"KeyLeft"`
-	KeyRight     string `json:"KeyRight"`
-	KeyDuck      string `json:"KeyDuck"`
+	Vsync        bool    `json:"Vsync"`
+	Fullscreen   bool    `json:"Fullscreen"`
+	WindowHeight float64 `json:"WindowHeight"`
+	WindowWidth  float64 `json:"WindowWidth"`
+	KeyJump      string  `json:"KeyJump"`
+	KeyLeft      string  `json:"KeyLeft"`
+	KeyRight     string  `json:"KeyRight"`
+	KeyDuck      string  `json:"KeyDuck"`
 }
 
-// Load config from file
+// Load variables config from file
 func (v *VariableConfig) Load(filename string) {
 	file, err := os.Open(filename)
 	if err != nil {
