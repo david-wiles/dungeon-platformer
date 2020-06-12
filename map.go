@@ -39,16 +39,14 @@ func loadMap(filename string) {
 	}
 
 	for _, obj := range mConfig.Entities {
-		var entity Platform
-		entity.Init(global.gTextures.sprites[obj.BlockType], obj.X*global.gScale, obj.Y*global.gScale)
+		var entity Mob
+		entity.Init(global.gTextures.sprites[obj.BlockType], obj.X, obj.Y)
 		global.gWorld.qt.Insert(entity.Bounds())
 	}
 
 }
 
-func (m *Map) Init() {
-
-}
+func (m *Map) Init() {}
 
 // Maybe this will be done with world.draw instead
 func (m *Map) drawMap() {}

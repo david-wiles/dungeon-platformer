@@ -12,18 +12,21 @@ type Textures struct {
 	sprites map[string]*Sprite
 }
 
+// Sprite contains a pixel sprite for drawing and the sprite's width and height in pixels,
+// which should be used to make the bounds for a rectangular entity
 type Sprite struct {
 	Frame  *pixel.Sprite
 	Width  float64
 	Height float64
 }
 
-// For parsing config
+// Texture configuration, from json file
 type textureConfig struct {
 	Filename string         `json:"Filename"`
 	Sprites  []spriteConfig `json:"Sprites"`
 }
 
+// Config for an individual sprite
 type spriteConfig struct {
 	Name string  `json:"Name"`
 	X    float64 `json:"X"`
@@ -33,7 +36,6 @@ type spriteConfig struct {
 }
 
 // Loads all textures from specified configuration
-// TODO use json config to loadBatch batches and sprites instead of hardcoded
 func (t *Textures) Load(file string) {
 	t.batch, t.sprites = loadBatch(file)
 }

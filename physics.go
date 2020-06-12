@@ -67,7 +67,7 @@ func (p *Physics) Update(move Move) {
 
 				if xDiff > yDiff {
 					if p.Velocity.X > 0 {
-						p.X = i.Left() - (p.Width * global.gScale)
+						p.X = i.Left() - p.Width
 						p.Velocity.X = 0
 					} else {
 						p.X = i.Right()
@@ -75,7 +75,7 @@ func (p *Physics) Update(move Move) {
 					}
 				} else {
 					if p.Velocity.Y > 0 {
-						p.Y = i.Bottom() - (p.Height * global.gScale)
+						p.Y = i.Bottom() - p.Height
 						p.Velocity.Y = 0
 					} else {
 						p.Y = i.Top()

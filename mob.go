@@ -29,7 +29,7 @@ func (m *Mob) Init(s *Sprite, x float64, y float64) {
 }
 
 func (m *Mob) Draw(dt float64) {
-	m.sprite.Draw(m.batch, pixel.IM.Scaled(pixel.ZV, global.gScale).Moved(m.DrawCenter))
+	m.sprite.Draw(m.batch, pixel.IM.Moved(m.DrawCenter))
 }
 
 func (m *Mob) GetDrawCenter() pixel.Vec {

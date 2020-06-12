@@ -30,7 +30,7 @@ func (p *Platform) Init(s *Sprite, x float64, y float64) {
 }
 
 func (p *Platform) Draw(dt float64) {
-	p.sprite.Draw(p.batch, pixel.IM.Scaled(pixel.ZV, global.gScale).Moved(p.DrawCenter))
+	p.sprite.Draw(p.batch, pixel.IM.Moved(p.DrawCenter))
 }
 
 func (p *Platform) GetDrawCenter() pixel.Vec {

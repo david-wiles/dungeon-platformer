@@ -2,9 +2,5 @@
   "Vsync": true,
   "Fullscreen": true,
   "WindowHeight": 768,
-  "WindowWidth": 1024,
-  "KeyJump": "w",
-  "KeyLeft": "a",
-  "KeyRight": "d",
-  "KeyDuck": "s"
+  "WindowWidth": 1024
 }
