@@ -29,6 +29,10 @@ func (p *Physics) Update(move Move) {
 		p.Velocity.X += 1
 	}
 
+	if move.Duck {
+		p.Velocity.Y -= 1
+	}
+
 	// Check max velocities
 
 	// Do gravity
@@ -47,42 +51,9 @@ func (p *Physics) Update(move Move) {
 	p.Y += p.Velocity.Y
 
 	// Calculate collisions
-	// TODO change p.Bounds to include the path that p will take during the tick
 	intersects := global.gWorld.qt.GetIntersections(p.Bounds)
 	if len(intersects) > 1 {
-		for _, i := range intersects {
-			if i.entity != p.entity {
-				var xDiff, yDiff float64
-				if p.Velocity.X > 0 {
-					xDiff = p.Right() - i.Left()
-				} else {
-					xDiff = p.Left() - i.Right()
-				}
-
-				if p.Velocity.Y > 0 {
-					yDiff = p.Top() - i.Bottom()
-				} else {
-					yDiff = p.Bottom() - i.Top()
-				}
-
-				if xDiff > yDiff {
-					if p.Velocity.X > 0 {
-						p.X = i.Left() - p.Width
-						p.Velocity.X = 0
-					} else {
-						p.X = i.Right()
-						p.Velocity.X = 0
-					}
-				} else {
-					if p.Velocity.Y > 0 {
-						p.Y = i.Bottom() - p.Height
-						p.Velocity.Y = 0
-					} else {
-						p.Y = i.Top()
-						p.Velocity.Y = 0
-					}
-				}
-			}
-		}
+		p.Velocity.X = 0
+		p.Velocity.Y = 0
 	}
 }
