@@ -31,7 +31,29 @@ func setup() {
 	global.gWorld.Init()
 	global.gWorld.LoadMap()
 
-	global.gPlayer.Init(global.gTextures.sprites["gold_knight"], 48, 21)
+	global.gPlayer.Init(&CompoundSprite{
+		batch: global.gTextures.batch,
+		sprites: []struct {
+			sprite *pixel.Sprite
+			matrix pixel.Matrix
+		}{
+			{
+				sprite: global.gTextures.sprites["gold_knight"].Frame,
+				matrix: pixel.IM,
+			},
+		},
+	}, &Physics{
+		Bounds: &Bounds{
+			X:      48,
+			Y:      21,
+			Width:  16,
+			Height: 16,
+			entity: global.gPlayer,
+		},
+		Center:   pixel.ZV,
+		Velocity: pixel.ZV,
+		entity:   global.gPlayer,
+	})
 	global.gWorld.qt.Insert(global.gPlayer.Bounds())
 
 	global.gCamera.Init()

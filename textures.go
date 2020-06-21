@@ -12,7 +12,7 @@ type Textures struct {
 	sprites map[string]*Sprite
 }
 
-// Sprite contains a pixel sprite for drawing and the sprite's width and height in pixels,
+// Sprite contains a pixel Sprite for drawing and the Sprite's width and height in pixels,
 // which should be used to make the bounds for a rectangular entity
 type Sprite struct {
 	Frame  *pixel.Sprite
@@ -26,7 +26,7 @@ type textureConfig struct {
 	Sprites  []spriteConfig `json:"Sprites"`
 }
 
-// Config for an individual sprite
+// Config for an individual Sprite
 type spriteConfig struct {
 	Name string  `json:"Name"`
 	X    float64 `json:"X"`

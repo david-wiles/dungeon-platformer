@@ -2,114 +2,194 @@
   "MapName": "The Dungeon",
   "Entities": [
     {
-      "BlockType": "wall",
+      "Name": "LeftWall",
       "X": -16,
-      "Y": 0
+      "Y": 0,
+      "Width": 16,
+      "Height": 96,
+      "Blocks": [
+        {
+          "BlockType": "wall",
+          "X": 0,
+          "Y": -40,
+          "Rotation": 0,
+          "Scale": 1
+        },
+        {
+          "BlockType": "wall",
+          "X": 0,
+          "Y": -24,
+          "Rotation": 0,
+          "Scale": 1
+        },
+        {
+          "BlockType": "wall",
+          "X": 0,
+          "Y": -8,
+          "Rotation": 0,
+          "Scale": 1
+        },
+        {
+          "BlockType": "wall",
+          "X": 0,
+          "Y": 8,
+          "Rotation": 0,
+          "Scale": 1
+        },
+        {
+          "BlockType": "wall",
+          "X": 0,
+          "Y": 24,
+          "Rotation": 0,
+          "Scale": 1
+        },
+        {
+          "BlockType": "wall",
+          "X": 0,
+          "Y": 40,
+          "Rotation": 0,
+          "Scale": 1
+        }
+      ]
     },
     {
-      "BlockType": "wall",
-      "X": -16,
-      "Y": 16
-    },
-    {
-      "BlockType": "wall",
-      "X": -16,
-      "Y": 32
-    },
-    {
-      "BlockType": "wall",
-      "X": -16,
-      "Y": 48
-    },
-    {
-      "BlockType": "wall",
-      "X": -16,
-      "Y": 64
-    },
-    {
-      "BlockType": "wall",
-      "X": -16,
-      "Y": 80
-    },
-    {
-      "BlockType": "long_platform",
+      "Name": "Floor",
       "X": 0,
-      "Y": 0
+      "Y": 0,
+      "Width": 240,
+      "Height": 20,
+      "Blocks": [
+        {
+          "BlockType": "long_platform",
+          "X": -96,
+          "Y": 0,
+          "Rotation": 0,
+          "Scale": 1
+        },
+        {
+          "BlockType": "long_platform",
+          "X": -48,
+          "Y": 0,
+          "Rotation": 0,
+          "Scale": 1
+        },
+        {
+          "BlockType": "long_platform",
+          "X": 0,
+          "Y": 0,
+          "Rotation": 0,
+          "Scale": 1
+        },
+        {
+          "BlockType": "long_platform",
+          "X": 48,
+          "Y": 0,
+          "Rotation": 0,
+          "Scale": 1
+        },
+        {
+          "BlockType": "long_platform",
+          "X": 96,
+          "Y": 0,
+          "Rotation": 0,
+          "Scale": 1
+        }
+      ]
     },
     {
-      "BlockType": "long_platform",
-      "X": 48,
-      "Y": 0
-    },
-    {
-      "BlockType": "long_platform",
-      "X": 96,
-      "Y": 0
-    },
-    {
-      "BlockType": "long_platform",
-      "X": 144,
-      "Y": 0
-    },
-    {
-      "BlockType": "long_platform",
-      "X": 192,
-      "Y": 0
-    },
-    {
-      "BlockType": "long_ceiling",
+      "Name": "Ceiling",
       "X": 0,
-      "Y": 72
+      "Y": 72,
+      "Width": 240,
+      "Height": 24,
+      "Blocks": [
+        {
+          "BlockType": "long_ceiling",
+          "X": -96,
+          "Y": 0,
+          "Rotation": 0,
+          "Scale": 1
+        },
+        {
+          "BlockType": "long_ceiling",
+          "X": -48,
+          "Y": 0,
+          "Rotation": 0,
+          "Scale": 1
+        },
+        {
+          "BlockType": "long_ceiling",
+          "X": 0,
+          "Y": 0,
+          "Rotation": 0,
+          "Scale": 1
+        },
+        {
+          "BlockType": "long_ceiling",
+          "X": 48,
+          "Y": 0,
+          "Rotation": 0,
+          "Scale": 1
+        },
+        {
+          "BlockType": "long_ceiling",
+          "X": 96,
+          "Y": 0,
+          "Rotation": 0,
+          "Scale": 1
+        }
+      ]
     },
     {
-      "BlockType": "long_ceiling",
-      "X": 48,
-      "Y": 72
-    },
-    {
-      "BlockType": "long_ceiling",
-      "X": 96,
-      "Y": 72
-    },
-    {
-      "BlockType": "long_ceiling",
-      "X": 144,
-      "Y": 72
-    },
-    {
-      "BlockType": "long_ceiling",
-      "X": 192,
-      "Y": 72
-    },
-    {
-      "BlockType": "wall",
+      "Name": "RightWall",
       "X": 240,
-      "Y": 0
-    },
-    {
-      "BlockType": "wall",
-      "X": 240,
-      "Y": 16
-    },
-    {
-      "BlockType": "wall",
-      "X": 240,
-      "Y": 32
-    },
-    {
-      "BlockType": "wall",
-      "X": 240,
-      "Y": 48
-    },
-    {
-      "BlockType": "wall",
-      "X": 240,
-      "Y": 64
-    },
-    {
-      "BlockType": "wall",
-      "X": 240,
-      "Y": 80
+      "Y": 0,
+      "Width": 16,
+      "Height": 96,
+      "Blocks": [
+        {
+          "BlockType": "wall",
+          "X": 0,
+          "Y": -40,
+          "Rotation": 0,
+          "Scale": 1
+        },
+        {
+          "BlockType": "wall",
+          "X": 0,
+          "Y": -24,
+          "Rotation": 0,
+          "Scale": 1
+        },
+        {
+          "BlockType": "wall",
+          "X": 0,
+          "Y": -8,
+          "Rotation": 0,
+          "Scale": 1
+        },
+        {
+          "BlockType": "wall",
+          "X": 0,
+          "Y": 8,
+          "Rotation": 0,
+          "Scale": 1
+        },
+        {
+          "BlockType": "wall",
+          "X": 0,
+          "Y": 24,
+          "Rotation": 0,
+          "Scale": 1
+        },
+        {
+          "BlockType": "wall",
+          "X": 0,
+          "Y": 40,
+          "Rotation": 0,
+          "Scale": 1
+        }
+      ]
     }
   ]
 }

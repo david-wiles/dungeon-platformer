@@ -8,8 +8,11 @@ import (
 // Physics is a component of a movable entity
 // If the entity should move during the tick, then update should be called
 // on the entity's physics object
+// Vertices contains a list of all the corners on the object to allow for abnormal shaped objects
 type Physics struct {
 	*Bounds
+	Vertices []pixel.Vec
+	Center   pixel.Vec
 	Velocity pixel.Vec
 	entity   Entity
 }
@@ -36,7 +39,7 @@ func (p *Physics) Update(move Move) {
 	// Check max velocities
 
 	// Do gravity
-	p.Velocity.Y -= 0.2
+	//p.Velocity.Y -= 0.2
 
 	// Update position based on velocity and reduce velocity of non-increasing directions
 	if math.Abs(p.Velocity.X) > 0 {

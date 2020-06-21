@@ -3,9 +3,9 @@ package main
 import "github.com/faiface/pixel"
 
 type Entity interface {
-	Init(*Sprite, float64, float64)
+	Init(*CompoundSprite, *Physics)
 	Draw(float64)
-	GetDrawCenter() pixel.Vec
+	Center() pixel.Vec
 	Bounds() *Bounds
 	GetPosition() pixel.Vec
 	Move(Move)

@@ -13,12 +13,7 @@ func (w *World) Init() {
 func (w *World) Draw(dt float64) {
 	global.gTextures.batch.Clear()
 
-	bounds := &Bounds{}
-	if global.gCamera.Follow != nil {
-		bounds = global.gCamera.Bounds()
-	}
-
-	for _, obj := range w.qt.GetIntersections(bounds) {
+	for _, obj := range w.qt.GetIntersections(global.gCamera.Bounds()) {
 		obj.entity.Draw(dt)
 	}
 
