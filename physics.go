@@ -39,7 +39,7 @@ func (p *Physics) Update(move Move) {
 	// Check max velocities
 
 	// Do gravity
-	//p.Velocity.Y -= 0.2
+	p.Velocity.Y -= 0.2
 
 	// Update position based on velocity and reduce velocity of non-increasing directions
 	if math.Abs(p.Velocity.X) > 0 {

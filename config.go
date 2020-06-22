@@ -29,7 +29,7 @@ var global = &Global{
 	gCamera:     &Camera{},
 	gController: &Controller{},
 	gWin:        &pixelgl.Window{},
-	gClearColor: color.RGBA{0, 0, 0, 1},
+	gClearColor: color.RGBA{90, 90, 90, 1},
 	gHud:        &Hud{},
 	gMap:        &Map{},
 	gMainMenu:   &Menu{},

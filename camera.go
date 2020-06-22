@@ -83,10 +83,10 @@ func (c *Camera) Update(dt float64) {
 		}
 	}
 	if global.gWin.Pressed(c.cameraZoomIn) {
-		c.zoom += dt
+		c.zoom += dt * 5
 	}
 	if global.gWin.Pressed(c.cameraZoomOut) {
-		c.zoom -= dt
+		c.zoom -= dt * 5
 	}
 
 	// Camera movement

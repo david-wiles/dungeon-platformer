@@ -14,8 +14,6 @@ func gameLoop() {
 		dt := time.Since(last).Seconds()
 		last = time.Now()
 
-		global.gWin.Clear(global.gClearColor)
-
 		global.gController.Update(dt)
 		global.gCamera.Update(dt)
 		global.gWorld.Draw(dt)
@@ -31,6 +29,7 @@ func setup() {
 	global.gWorld.Init()
 	global.gWorld.LoadMap()
 
+	// Initialize player
 	global.gPlayer.Init(&CompoundSprite{
 		batch: global.gTextures.batch,
 		sprites: []struct {

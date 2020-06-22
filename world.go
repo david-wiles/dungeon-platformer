@@ -11,6 +11,7 @@ func (w *World) Init() {
 
 // Draw all spites in the current world
 func (w *World) Draw(dt float64) {
+	global.gWin.Clear(global.gClearColor)
 	global.gTextures.batch.Clear()
 
 	for _, obj := range w.qt.GetIntersections(global.gCamera.Bounds()) {
