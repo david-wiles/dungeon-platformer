@@ -1,5 +1,17 @@
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/david-wiles/goplai v0.0.1 h1:bB5IvG/eKaw0WTXiUI+5Fu9ouXhMv9wp3LQkrzZwPF0=
+github.com/david-wiles/goplai v0.0.1/go.mod h1:hZsq92dCZcbB9z6VrzvqURd0wqsW8YGkCTvM9u3qFQE=
+github.com/david-wiles/goplai v0.0.2-0.20200627190305-f0a0eda8409b h1:H9fNaz5957tcf2Mi7PXeoM/aawLcXskdliy7ugqlcN4=
+github.com/david-wiles/goplai v0.0.2-0.20200627190305-f0a0eda8409b/go.mod h1:hZsq92dCZcbB9z6VrzvqURd0wqsW8YGkCTvM9u3qFQE=
+github.com/david-wiles/goplai v0.0.2-0.20200627194831-435f80199bd3 h1:wSzRHcAegtNe54qe5LSoe9rNKYR4bfofDfmHRDN5xCI=
+github.com/david-wiles/goplai v0.0.2-0.20200627194831-435f80199bd3/go.mod h1:hZsq92dCZcbB9z6VrzvqURd0wqsW8YGkCTvM9u3qFQE=
+github.com/david-wiles/goplai v0.0.2-0.20200627200108-b4c706ccdd55 h1:/KyJZU5Jx06LhqfdjRBWl3m+19BEkFQaaeK93lz3rsI=
+github.com/david-wiles/goplai v0.0.2-0.20200627200108-b4c706ccdd55/go.mod h1:hZsq92dCZcbB9z6VrzvqURd0wqsW8YGkCTvM9u3qFQE=
+github.com/david-wiles/goplai v0.0.2-0.20200628184445-f87d8540dd93 h1:+01Mif9nV0Tp+xq4HA7L3W4gGwTpcX01aUavo5EseBc=
+github.com/david-wiles/goplai v0.0.2-0.20200628184445-f87d8540dd93/go.mod h1:hZsq92dCZcbB9z6VrzvqURd0wqsW8YGkCTvM9u3qFQE=
+github.com/david-wiles/goplai v0.0.2-0.20200628185015-903aa2defe9f h1:gOp4LPy1RYc6d7Pn17apzl9rsfAhJ72bzZF1NZm26NE=
+github.com/david-wiles/goplai v0.0.2-0.20200628185015-903aa2defe9f/go.mod h1:hZsq92dCZcbB9z6VrzvqURd0wqsW8YGkCTvM9u3qFQE=
 github.com/faiface/glhf v0.0.0-20181018222622-82a6317ac380 h1:FvZ0mIGh6b3kOITxUnxS3tLZMh7yEoHo75v3/AgUqg0=
 github.com/faiface/glhf v0.0.0-20181018222622-82a6317ac380/go.mod h1:zqnPFFIuYFFxl7uH2gYByJwIVKG7fRqlqQCbzAnHs9g=
 github.com/faiface/mainthread v0.0.0-20171120011319-8b78f0a41ae3 h1:baVdMKlASEHrj19iqjARrPbaRisD7EuZEVJj6ZMLl1Q=
